@@ -2,11 +2,14 @@ from scapy.all import *
 import json
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
+import atexit
 
 ipToListenTo = sys.argv[1]
 numberOfArgumentsToRead = sys.argv[2]
 argumentsToRead = []
 lastPacketContent = ""
+vdmTraceFile = open("trace.txt", "w")
+vdmTraceFile.write("[")
 
 for i in range(int(numberOfArgumentsToRead)):
     argumentsToRead.append(sys.argv[3 + i])
@@ -18,9 +21,33 @@ def checkPackets(packet):
         parseHTTPGetPacket(packet)
 
 
+isFirstParameterAdded = False
+
+
+def addParametersToVDMTrace(parameters):
+    global isFirstParameterAdded
+    # If the parameters have at least one requested argument
+    if list(set(argumentsToRead) & set(parameters.keys())):
+        if isFirstParameterAdded:
+            vdmTraceFile.write(",")
+        else:
+            isFirstParameterAdded = True
+        vdmTraceFile.write("mk_(")
+        isFirstArgumentAdded = False
+        for argumentToRead in argumentsToRead:
+            if argumentToRead in parameters.keys():
+                if isFirstArgumentAdded:
+                    vdmTraceFile.write(",")
+                else:
+                    isFirstArgumentAdded = True
+                vdmTraceFile.write('"' + parameters[argumentToRead] + '"')
+        vdmTraceFile.write(")")
+
+
 def parseHTTPGetPacket(packet):
     global lastPacketContent
     packetContet = packet.sprintf("{Raw:%Raw.load%}")
+    # The scapy library sees a packet twice. Once when it leaves the interface and once when it comes bck. We only want to process a packet once
     if lastPacketContent != packetContet:
         packetLines = packetContet.split(r"\r\n")
         # Request packet
@@ -41,6 +68,7 @@ def parseHTTPGetPacket(packet):
             print("Data: ")
             print(requestParameters)
             print()
+            addParametersToVDMTrace(requestParameters)
         # Response packet
         elif "Content-Type: application/json" in packetContet:
             lastPacketLine = packetLines[-1]
@@ -51,6 +79,7 @@ def parseHTTPGetPacket(packet):
             print("Data: ")
             print(responseParameters)
             print()
+            addParametersToVDMTrace(responseParameters)
     lastPacketContent = packetContet
 
 
@@ -63,3 +92,13 @@ def getListOfRequestParameters(requestParameters):
 
 sniff(filter="host " + ipToListenTo + " or dst " + ipToListenTo, prn=checkPackets
       )
+
+
+def exit_handler():
+    # When CTRL+C is pressed, the program will finish writing into the VDM trace file and then it will exit
+    vdmTraceFile.write("]")
+    vdmTraceFile.close()
+    print('Application closed! Saving VDM trace!')
+
+
+atexit.register(exit_handler)
