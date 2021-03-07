@@ -1,4 +1,5 @@
 import atexit
+import json
 
 isFirstParameterAdded = False
 vdmTraceFile = None
@@ -19,20 +20,33 @@ def addParametersToVDMTrace(parameters):
     global vdmTraceFile
     global argumentsToSaveInTrace
     # If the parameters have at least one requested argument
-    if list(set(argumentsToSaveInTrace) & set(parameters.keys())):
+    if list(set(map(lambda argument: argument["name"], argumentsToSaveInTrace)) & set(parameters.keys())):
         if isFirstParameterAdded:
             vdmTraceFile.write(",")
         else:
             isFirstParameterAdded = True
         vdmTraceFile.write("mk_(")
         isFirstArgumentAdded = False
-        for argumentToRead in argumentsToSaveInTrace:
-            if argumentToRead in parameters.keys():
+        for argument in argumentsToSaveInTrace:
+            if argument["name"] in parameters.keys():
                 if isFirstArgumentAdded:
                     vdmTraceFile.write(",")
                 else:
                     isFirstArgumentAdded = True
-                vdmTraceFile.write('"' + parameters[argumentToRead] + '"')
+
+                if argument["type"] == "OBJECT":
+                    vdmTraceFile.write(json.dumps(
+                        parameters[argument["name"]]).replace(": ", "|->"))
+                elif argument["type"] == "BOOLEAN":
+                    vdmTraceFile.write(
+                        "true" if parameters[argument["name"]] else "false")
+                elif argument["type"] == "NUMBER":
+                    vdmTraceFile.write(str(
+                        parameters[argument["name"]]))
+                else:
+                    vdmTraceFile.write(json.dumps(
+                        parameters[argument["name"]]))
+
         vdmTraceFile.write(")")
 
 

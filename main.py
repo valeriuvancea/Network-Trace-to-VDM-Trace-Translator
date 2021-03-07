@@ -1,7 +1,7 @@
-import systemArguments
-import networkSniffer
-import vdmTrace
+from systemArguments import readSystemArguments
+from vdm.vdmTrace import vdmTraceFileInit
+from network.networkSnifferInitializer import NetworkSnifferInitializer
 
-ipToListenTo, argumentsToSave = systemArguments.readSystemArguments()
-vdmTrace.vdmTraceFileInit(argumentsToSave)
-networkSniffer.networkSnifferInit(ipToListenTo)
+ipToListenTo, argumentsToSave = readSystemArguments()
+vdmTraceFileInit(argumentsToSave)
+NetworkSnifferInitializer(ipToListenTo)
