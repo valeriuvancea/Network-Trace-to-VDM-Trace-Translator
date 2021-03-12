@@ -7,9 +7,9 @@ class BaseParser:
         self.requestPacketDataExtractor = requestPacketDataExtractor
         self.responsePacketDataExtractor = responsePacketDataExtractor
 
-    def parse(self, packet):
+    def parse(self, packet, defragmentedPacketStringContent):
         self.packet = packet
-        self.packetStringContet = packet.sprintf("{Raw:%Raw.load%}")
+        self.packetStringContet = defragmentedPacketStringContent
         if BaseParser.lastPacketContent != self.packetStringContet:
             self.parseToImplement()
         BaseParser.lastPacketContent = self.packetStringContet

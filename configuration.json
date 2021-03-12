@@ -1,0 +1,32 @@
+{
+    "scapyFilter": "host 192.168.0.34 or dst 192.168.0.34",
+    "globalDictionary": {
+        "keyVaultIp": "192.168.0.34"
+    },
+    "argumentsToSave": [
+        {
+            "name": "a",
+            "type": "STRING"
+        },
+        {
+            "name": "b",
+            "type": "STRING"
+        },
+        {
+            "name": "c",
+            "type": "ARRAY"
+        },
+        {
+            "name": "d",
+            "type": "OBJECT"
+        },
+        {
+            "name": "isForKeyVault",
+            "type": "BOOLEAN"
+        },
+        {
+            "name": "f",
+            "type": "NUMBER"
+        }
+    ]
+}

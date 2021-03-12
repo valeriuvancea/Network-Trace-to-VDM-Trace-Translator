@@ -2,39 +2,45 @@
 This script generates a VDM Trace by sniffing network packets from or to a specific IP address. This script uses scapy for network sniffing.
 
 ## How to use
-Call the main script with two arguments. The first one is the IP address used for sniffing and the second is a path to the configuration file.
-E.g. `python main.py 192.168.0.35 argumentsToSave.json`
+Call the main script with one argument, the path to the configuration file.
+E.g. `python main.py configuration.json`
 
 ## Configuration file
-The configuration is a json file where you can specify how to write certain parameters into the VDM trace.
+The configuration is a json file where you can specify how to write certain parameters into the VDM trace, the scapy filter and a global dictionary which will be available everywhere in the code by using the GlobalConfiguration class.
 E.g.
 ```javascript
-[
-    {
-        "name": "a",
-        "type": "STRING"
+{
+    "scapyFilter": "host 192.168.0.34 or dst 192.168.0.34",
+    "globalDictionary": {
+        "keyVaultIp": "192.168.0.34"
     },
-    {
-        "name": "b",
-        "type": "STRING"
-    },
-    {
-        "name": "c",
-        "type": "ARRAY"
-    },
-    {
-        "name": "d",
-        "type": "OBJECT"
-    },
-    {
-        "name": "e",
-        "type": "BOOLEAN"
-    },
-    {
-        "name": "f",
-        "type": "NUMBER"
-    }
-]
+    "argumentsToSave": [
+        {
+            "name": "a",
+            "type": "STRING"
+        },
+        {
+            "name": "b",
+            "type": "STRING"
+        },
+        {
+            "name": "c",
+            "type": "ARRAY"
+        },
+        {
+            "name": "d",
+            "type": "OBJECT"
+        },
+        {
+            "name": "isForKeyVault",
+            "type": "BOOLEAN"
+        },
+        {
+            "name": "f",
+            "type": "NUMBER"
+        }
+    ]
+}
 ```
 
 ### Supported types

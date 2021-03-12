@@ -2,6 +2,6 @@ from systemArguments import readSystemArguments
 from vdm.vdmTrace import vdmTraceFileInit
 from network.networkSnifferInitializer import NetworkSnifferInitializer
 
-ipToListenTo, argumentsToSave = readSystemArguments()
-vdmTraceFileInit(argumentsToSave)
-NetworkSnifferInitializer(ipToListenTo)
+readSystemArguments()
+vdmTraceFileInit()
+NetworkSnifferInitializer()
