@@ -40,6 +40,9 @@ def addParametersToVDMTrace(parameters):
                 elif argument["type"] == "NUMBER":
                     vdmTraceFile.write(str(
                         parameters[argument["name"]]))
+                elif argument["type"] == "TOKEN":
+                    vdmTraceFile.write("mk_token(" + str(
+                        parameters[argument["name"]]) +")")
                 else:
                     vdmTraceFile.write(json.dumps(
                         parameters[argument["name"]]))

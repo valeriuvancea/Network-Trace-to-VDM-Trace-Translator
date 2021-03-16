@@ -47,6 +47,7 @@ E.g.
 - STRING -> is equivalent to `seq of char` in VDM
 - NUMBER
 - BOOLEAN
+- TOKEN -> is equivalent of the VDM 'token'; it will generate a `mk_token(...)`
 - ARRAY -> is equivalent to a `seq` in VDM. The type of the sequence will be inferred from the JSON data format from the packet.
 - OBJECT -> is equivalent to a `map` in VDM. The type of the map will be inferred from the JSON data format from the packet. (usually in JSON the key type is a string so a `seq of char` in VDM)
 
