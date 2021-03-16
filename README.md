@@ -56,7 +56,7 @@ The packet parsers supports the following:
 - HTTP GET Response -> this parses the json returned by the server
 
 ## Extension
-One can extend this script for its own protocols
+One can extend this script for its own protocols by creating a new parser using the `BaseParser` class and implementing the `parseToImplement` function. In this function one should use 1 or more packet data extractor which can be implemented using the `BasePacketDataExtractor`. After this create a new function in the `NetworkSnifferInitializer` class which adds the newly created parser to the `NetworkSniffer` and call this function before the `startSniffing` function from the `NetworkSnifferInitializer` constructor.
 
 ### Packet data extractor
 There following base classes are defined which can be used for extension:
