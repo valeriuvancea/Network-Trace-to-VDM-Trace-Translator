@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="List&lt;BaseParser&gt;" version="4">
+  <OBJECT>
+    <ID name="List&lt;BaseParser&gt;" mc="Standard.DataType" uid="94fc18ee-56c1-42d8-a5db-2ffd7f6cf461"/>
+    <PID name="uml" mc="Standard.Package" uid="002b486c-2b5d-48ee-90b4-50a172114e26"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">true</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[List<BaseParser>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

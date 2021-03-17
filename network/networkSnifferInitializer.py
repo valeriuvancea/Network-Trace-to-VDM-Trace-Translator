@@ -6,8 +6,13 @@ from network.parser.http.get.httpGetParser import HTTPGetParser
 
 class NetworkSnifferInitializer:
     def __init__(self):
+        self.networkSniffer = NetworkSniffer()
+        self.addHTTPGetParser()
+        self.networkSniffer.startSniffing()
+
+    def addHTTPGetParser(self):
         httpGetRequestPacketDataExtractor = MockupHTTPGetRequestPacketDataExtractor()
         httpGetResponsePacketDataExtractor = HTTPGetResponsePacketDataExtractor()
         httpGetParser = HTTPGetParser(
             httpGetRequestPacketDataExtractor, httpGetResponsePacketDataExtractor)
-        self.networkSniffer = NetworkSniffer(httpGetParser)
+        self.networkSniffer.addParser(httpGetParser)

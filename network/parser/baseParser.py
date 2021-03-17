@@ -1,18 +1,15 @@
 class BaseParser:
-    lastPacketContent = ""
-
-    def __init__(self, requestPacketDataExtractor, responsePacketDataExtractor):
+    def __init__(self):
         self.packet = None
         self.packetStringContet = ""
-        self.requestPacketDataExtractor = requestPacketDataExtractor
-        self.responsePacketDataExtractor = responsePacketDataExtractor
+        self.lastPacketContent = ""
 
-    def parse(self, packet, defragmentedPacketStringContent):
+    def parse(self, packet):
         self.packet = packet
-        self.packetStringContet = defragmentedPacketStringContent
-        if BaseParser.lastPacketContent != self.packetStringContet:
+        self.packetStringContet = packet.sprintf("{Raw:%Raw.load%}")
+        if self.lastPacketContent != self.packetStringContet:
             self.parseToImplement()
-        BaseParser.lastPacketContent = self.packetStringContet
+        self.lastPacketContent = self.packetStringContet
 
     def parseToImplement(self):
         pass

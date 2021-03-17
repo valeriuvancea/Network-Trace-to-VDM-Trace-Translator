@@ -47,6 +47,7 @@ E.g.
 - STRING -> is equivalent to `seq of char` in VDM
 - NUMBER
 - BOOLEAN
+- TOKEN -> is equivalent of the VDM 'token'; it will generate a `mk_token(...)`
 - ARRAY -> is equivalent to a `seq` in VDM. The type of the sequence will be inferred from the JSON data format from the packet.
 - OBJECT -> is equivalent to a `map` in VDM. The type of the map will be inferred from the JSON data format from the packet. (usually in JSON the key type is a string so a `seq of char` in VDM)
 
@@ -56,7 +57,7 @@ The packet parsers supports the following:
 - HTTP GET Response -> this parses the json returned by the server
 
 ## Extension
-One can extend this script for its own protocols
+One can extend this script for its own protocols by creating a new parser using the `BaseParser` class and implementing the `parseToImplement` function. In this function one should use 1 or more packet data extractor which can be implemented using the `BasePacketDataExtractor`. After this create a new function in the `NetworkSnifferInitializer` class which adds the newly created parser to the `NetworkSniffer` and call this function before the `startSniffing` function from the `NetworkSnifferInitializer` constructor.
 
 ### Packet data extractor
 There following base classes are defined which can be used for extension:
