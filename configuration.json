@@ -1,32 +1,52 @@
 {
-    "scapyFilter": "host 192.168.0.34 or dst 192.168.0.34",
+    "scapyFilter": "host 192.168.1.99 or dst 192.168.1.99 or port 2570 or port 2571",
     "globalDictionary": {
-        "keyVaultIp": "192.168.0.34"
+        "keyVaultIp": "192.168.1.99"
     },
     "argumentsToSave": [
         {
-            "name": "a",
+            "name": "type",
             "type": "STRING"
         },
         {
-            "name": "b",
+            "name": "controller_id",
             "type": "STRING"
-        },
-        {
-            "name": "c",
-            "type": "ARRAY"
-        },
-        {
-            "name": "d",
-            "type": "OBJECT"
         },
         {
             "name": "isForKeyVault",
             "type": "BOOLEAN"
         },
         {
-            "name": "f",
-            "type": "NUMBER"
+            "name": "isBetweenControllers",
+            "type": "BOOLEAN"
+        },
+        {
+            "name": "sender_id",
+            "type": "STRING"
+        },
+        {
+            "name": "cert_eff",
+            "type": "STRING"
+        },
+        {
+            "name": "encrypted_data",
+            "type": "STRING"
+        },
+        {
+            "name": "cert_kv",
+            "type": "STRING"
+        },
+        {
+            "name": "cert_ca",
+            "type": "STRING"
+        },
+        {
+            "name": "pk_eff",
+            "type": "STRING"
+        },
+        {
+            "name": "hash",
+            "type": "STRING"
         }
     ]
 }
