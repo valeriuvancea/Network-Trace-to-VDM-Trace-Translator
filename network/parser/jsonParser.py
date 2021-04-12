@@ -8,5 +8,6 @@ class JsonParser(BaseParser):
         self.packetDataExtractor = packetDataExtractor
 
     def parseToImplement(self):
-        self.packetDataExtractor.writeDataIntoVDMTraceFromPacket(
-                self.packet, self.packetStringContet)
+        if  len(self.packetStringContet) != 0 and self.packet.payload.dst == '255.255.255.255':
+            self.packetDataExtractor.writeDataIntoVDMTraceFromPacket(
+                    self.packet, self.packetStringContet)

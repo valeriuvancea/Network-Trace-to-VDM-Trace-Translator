@@ -1,7 +1,7 @@
 {
-    "scapyFilter": "host 192.168.1.99 or dst 192.168.1.99 or port 2570 or port 2571",
+    "scapyFilter": "host 192.168.0.35 or dst 192.168.0.35 or port 2378",
     "globalDictionary": {
-        "keyVaultIp": "192.168.1.99"
+        "keyVaultIp": "192.168.0.35"
     },
     "argumentsToSave": [
         {

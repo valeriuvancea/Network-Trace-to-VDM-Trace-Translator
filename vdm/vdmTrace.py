@@ -22,7 +22,7 @@ def addParametersToVDMTrace(parameters):
             vdmTraceFile.write(",")
         else:
             isFirstParameterAdded = True
-        vdmTraceFile.write("mk_(")
+        vdmTraceFile.write("{")
         isFirstArgumentAdded = False
         for argument in GlobalConfiguration.argumentsToSave:
             if argument["name"] in parameters.keys():
@@ -30,6 +30,8 @@ def addParametersToVDMTrace(parameters):
                     vdmTraceFile.write(",")
                 else:
                     isFirstArgumentAdded = True
+
+                vdmTraceFile.write('"' + argument["name"] + '"|->')
 
                 if argument["type"] == "OBJECT":
                     vdmTraceFile.write(json.dumps(
@@ -47,7 +49,7 @@ def addParametersToVDMTrace(parameters):
                     vdmTraceFile.write(json.dumps(
                         parameters[argument["name"]]))
 
-        vdmTraceFile.write(")")
+        vdmTraceFile.write("}")
 
 
 def exit_handler():

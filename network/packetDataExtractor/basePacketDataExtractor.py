@@ -23,11 +23,12 @@ class BasePacketDataExtractor:
         pass
 
     def writeDataIntoVDMTraceFromPacket(self, packet, packetStringContent):
-        self.packet = packet
-        self.packetStringContent = packetStringContent
-        self.source = packet.payload.src
-        self.destination = packet.payload.dst
-        self.getDataFromPacket()
-        self.printPacket()
-        self.addAdditionalParametersToData()
-        addParametersToVDMTrace(self.data)
+        if len(packetStringContent) != 0:
+            self.packet = packet
+            self.packetStringContent = packetStringContent
+            self.source = packet.payload.src
+            self.destination = packet.payload.dst
+            self.getDataFromPacket()
+            self.printPacket()
+            self.addAdditionalParametersToData()
+            addParametersToVDMTrace(self.data)
