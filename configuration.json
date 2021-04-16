@@ -1,9 +1,13 @@
 {
-    "scapyFilter": "host 192.168.0.35 or dst 192.168.0.35 or port 2378",
+    "scapyFilter": "host 192.168.1.99 or host 192.168.1.135 or host 192.168.1.113 or port 2378",
     "globalDictionary": {
-        "keyVaultIp": "192.168.0.35"
+        "keyVaultIp": "192.168.1.99"
     },
     "argumentsToSave": [
+        {
+            "name": "cert_ct",
+            "type": "STRING"
+        },
         {
             "name": "type",
             "type": "STRING"
