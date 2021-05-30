@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="uml" version="4">
+  <OBJECT>
+    <ID name="uml" mc="Standard.Package" uid="002b486c-2b5d-48ee-90b4-50a172114e26"/>
+    <PID name="UML" mc="Standard.Project" uid="7eabb1fd-2bd7-430a-9100-36e3a2963216"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[uml]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="NetworkSniffer" mc="Standard.Class" uid="7f53d3fe-1073-43f0-83bd-47bd93ce43ac"/>
+        <COMPID name="BaseParser" mc="Standard.Class" uid="35453e7a-752c-43cd-9f8d-387b0ba700dd"/>
+        <COMPID name="BasePacketDataExtractor" mc="Standard.Class" uid="62f27b09-473f-4da5-b0a1-2312c1df51f8"/>
+        <COMPID name="HTTPGetRequestPacketDataExtractor" mc="Standard.Class" uid="1006a86e-90d6-4376-8404-b9abd16ece8e"/>
+        <COMPID name="HTTPGetResponsePacketDataExtractor" mc="Standard.Class" uid="912d380f-f665-4ee5-a063-5f995c7accb0"/>
+        <COMPID name="VDMTrace" mc="Standard.Class" uid="2a879b73-548e-41ea-af4f-ce6afffd4cc2"/>
+        <COMPID name="HTTPGetParser" mc="Standard.Class" uid="296973de-2c48-4bd7-bec9-a94703f837f8"/>
+        <COMPID name="List&lt;BaseParser&gt;" mc="Standard.DataType" uid="94fc18ee-56c1-42d8-a5db-2ffd7f6cf461"/>
+        <COMPID name="MockupHTTPGetRequestPacketDataExtractor" mc="Standard.Class" uid="1a01c954-3831-4a61-a1f0-43eb756c9f7c"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Generic Class diagram" mc="Standard.ClassDiagram" uid="f2c79fea-30ae-412c-8e70-3a8ca4676a7b"/>
+        <COMPID name="Specific Class diagram" mc="Standard.ClassDiagram" uid="460a5a2f-7311-4dc5-b3e4-29c88a7e65c0"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
